@@ -1,0 +1,27 @@
+{
+    "vanguard":
+        {
+            "url_name": "Vanguard Newspaper",
+            "url_link": "https://www.vanguardngr.com/news/", 
+            "url_loc": "h2", 
+            "url_class": "entry-title",
+            "base":""
+        },
+    "punch":
+        {
+            "url_name": "Punch Newspaper",
+            "url_link": "https://punchng.com/topics/news/", 
+            "url_loc": "div", 
+            "url_class": "items col-sm-12" ,
+            "base":"",
+            "img_loc": "div",
+            "img_class": "b-lazy",
+            "img_link_loc": "data-src", 
+            "body_loc": "div",
+            "body_class":"entry-content",
+            "title_loc": "h1",
+            "title_class":"post_title"
+        }
+
+
+}

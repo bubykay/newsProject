@@ -1,0 +1,114 @@
+{% extends 'includes/base.html' %}
+{% load crispy_forms_tags%}
+{% load static %}
+{% block title %}{{title}}{%endblock%}
+{% block meta_description %}{{description}}{% endblock %}
+{% block meta_keywords %} {{keywords}} {%endblock%}
+{% block js-header%}<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js" integrity="sha512-m3kH21aSkKrGeoqdb7IP7rlu1VcQee5VrjLQepeSOp5M05Wl6HwqJ1Jwo14EHOuBg77pkAlBtQuVMPVeXzfueg==" crossorigin="anonymous"></script>
+{%endblock%}
+{% block content %}
+<div class="container py-5">
+  <div class="pb-4">
+<!--    {% include 'includes/ads/jumia/nigeria.html' %}-->
+  </div>
+    <div class="row">
+        <div class="col-md-9 bg-white py-5 ">
+
+          <div class="infinite-container d-md-none d-lg-none d-xl-none">
+            {% for news in content %}
+            {% if news.image|length > 1 %}
+            <div class="col new_head py-auto mb-2 infinite-item" >
+                <div class="" style="background-image: url('{{news.image}}'); background-color: black; height: 200px; background-repeat: no-repeat; background-size: cover; vertical-align: center;">
+                    <div class="bg-black1 h-100 text-white px-auto py-5" style="margin-top: auto;">
+                        <h4 class=""><a href="{% url 'news' slug=news.slug %}" class="nav-link text-white">{{news.title}}</a></h4>
+                    </div>
+                </div>
+                <div class="pt-2"><small>{{news.body|slice:200}}...</small></div>
+                <hr>
+            </div>
+            {% endif %}
+            {% endfor %}            
+        </div>
+
+
+            <div class="container-fluid d-none d-sm-block">
+                <div class="row row-cols-2 infinite-container ">
+                    {% for news in content %}
+                    {% if news.image|length > 1 %}
+                    <div class="col new_head py-auto mb-2 infinite-item" >
+                        <div class="" style="background-image: url('{{news.image}}'); background-color: black; height: 200px; background-repeat: no-repeat; background-size: cover; vertical-align: center;">
+                            <div class="bg-black1 h-100 text-white px-auto py-5" style="margin-top: auto;">
+                                <h4 class=""><a href="{% url 'news' slug=news.slug %}" class="nav-link text-white">{{news.title}}</a></h4>
+                            </div>
+                        </div>
+                        <div class="pt-2"><small>{{news.body|slice:200}}...</small></div>
+                        <hr>
+                    </div>
+                    {% endif %}
+                    {% endfor %}            
+                </div>
+                <!-- =============================================================================== -->
+            <!-- <center>
+                <div class="w-100  mt-3">
+                    {% if content.has_other_pages %}
+                    <ul class="pagination">
+                        {% if content.has_previous %}
+                        <li class="p-2 border"><a href="?page={{ content.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                        <li class="disabled p-2 border-top border-bottom border-left"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in content.paginator.page_range %}
+                        {% if content.number == i %}
+                            <li class="bg-primary text-white p-2 border-top border-bottom border-left"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li class="p-2 border-top border-bottom border-left"><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if content.has_next %}
+                        <li class="p-2 border"><a href="?page={{ content.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                        <li class="disabled border p-2"><span>&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                  {% endif %}  
+                  </div>
+            </center> -->
+
+              <!-- ================================================================ -->
+
+              {% if content.has_next %}
+              <a class="infinite-more-link" href="?page={{ content.next_page_number }}">More</a>
+            {% endif %}
+            <div class="loading" style="display: none;">
+                Loading...
+              </div>
+              <script>
+                var infinite = new Waypoint.Infinite({
+                  element: $('.infinite-container')[0],
+                  onBeforePageLoad: function () {
+                    $('.loading').show();
+                  },
+                  onAfterPageLoad: function ($items) {
+                    $('.loading').hide();
+                  }
+                });
+              </script>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js-footer%}
+<script>
+    $('.row').infiniteScroll({
+    // options
+    path: '.pagination__next',
+    append: '.new_head',
+    history: false,
+  });
+</script>
+{%endblock%}

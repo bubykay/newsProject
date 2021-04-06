@@ -1,0 +1,85 @@
+{% extends 'includes/base.html' %}
+{% load kokoroyin %}
+{% load crispy_forms_tags%}
+{% load static %}
+{% block title %} {{content.title}} {%endblock%}
+{% block meta_description %}Join the best IT solution company in Nigeria{% endblock %}
+{% block meta_keywords %} {{content.keywords}} {%endblock%}
+
+{% block content %}
+    <div class="container-fluid d-none d-sm-block">
+        <h5 class=" pl-5 text-danger">Trending Now</h5> 
+        <div class="bg-white py-4 mb-5 px-3 m-0">
+            <div class="row rows-cols-5">
+                {% for trend in trends %}
+                <div class="col py-auto" >
+                    <div class="" style="background-image: url('{{trend.image}}'); background-color: black; height: 130px; background-repeat: no-repeat; background-size: cover; vertical-align: center;">
+                        <div class="bg-black1 my-auto h-100 text-white px-auto" >
+                            <p class=""><a href="{% url 'news' slug=trend.slug %}" class="nav-link text-white"><strong>{{trend.title}}</strong></a></p>
+                            <p class="pl-3"><i class="fas fa-eye"></i> {{trend.views|add:120}}</p>
+                        </div>
+            
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container ">
+        <div class="container-fluid">
+            <h1 class="py-1">{{content.title}}</h1>
+            <hr>
+                <div class=" a2a_kit a2a_kit_size_32 a2a_default_style text-right">
+                    <span class="align-self-left">Published by: {{content.source|title}} &nbsp;</span> 
+               <span class="align-self-right"><i class="fas fa-eye "></i> {% if content.views > 200 %} {{content.views}} {% endif %} {% if content.views < 200 %} {{content.views|add:120}} {% endif %}</span>
+                    
+                    <a class="a2a_button_facebook"></a>
+                    <a class=" a2a_button_twitter"></a>
+                    <a class=" a2a_button_email"></a>
+                    <a class=" a2a_button_whatsapp"></a>
+                    <a href="">  </a>
+    
+                </div>
+                <hr>
+
+            <div class="row">
+                <div class="col-md-9 bg-white p-0">
+                    <div class="container p-0 " >
+                     <div class=" bg-black text-white">
+                        <!-- needs to cut out the styling into main.css  -->
+                        <div class="bg-black m-0" style="height: 300px; "><center><img src="{{content.image}}" alt="" class=""  style="object-fit: cover; width: 100%; height: 300px;"></center></div>
+                     </div>
+                  
+                    <div class="px-lg-4 py-lg-4 news">
+                        <!-- {{content.body|paragraphs}} -->
+                        {% autoescape off %}
+                        {% with content.body|twitter_handle as body %}
+                        {{body|inject_ads:3}}
+                        {% endwith %}
+                        {% endautoescape %}
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="bg-white p-3">Just In</h3>
+                    <ul class="p-0 m-0">
+                        {% for all in also %}
+                        <li class="px-2 mb-2 bg-white" style="list-style: none; padding: 0;"><small><a href="{% url 'news' slug=all.slug %}">{{all.title}}</a></small><small class="text-danger">  {{all.source}}.com</small></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+{%endblock%}
+
+{% block js-footer %}
+<script>
+    var a2a_config = a2a_config || {};
+    a2a_config.num_services = 10;
+    </script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+
+{% endblock %}

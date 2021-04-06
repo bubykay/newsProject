@@ -1,0 +1,202 @@
+.bg-black1 {
+    background: rgba(0,0,0,0.6);
+ }
+
+.bg-home-1{
+    /* background-attachment: fixed; */
+    /* background-position: center, center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    background-image:url('../img/2.jpg');
+  
+  }
+
+
+body{
+      margin: 0;
+      background-color: rgba(0,0,0);
+      overflow-x:hidden;
+      max-width: 100%;
+      padding: 0;
+  }
+
+  /* body h1, h2, h3, h4, h5{
+    font-family: 'Teko', sans-serif;
+    margin-bottom: 0 !important;
+  } */
+
+  body p{
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .href{
+    color: red;
+  }  
+
+  .navbar-default{
+    max-width:100%;
+  }
+
+nav .navbar-nav li a{
+    color: white !important;
+    }
+.h-f-100{
+    min-height: 100vh;
+}
+
+
+.bg-gray {
+    background-color: silver;
+}
+
+.bg-grey {
+    background-color: silver;
+}
+
+
+
+.newsletter form {
+    display:flex;
+    flex-direction:row;
+    /* border:1px solid grey; */
+    padding:2px;
+  }
+  
+ .newsletter input {
+    flex-grow:2;
+    border:none;
+    height: 50px;
+  }
+  
+  .newsletter input:focus {
+    outline: none;
+  }
+/*   
+  .newsletter button {
+    border:1px solid blue;
+    background:blue;
+    color:white;
+  } */
+
+  .home-ul li{
+    padding-bottom: 7px;
+    text-decoration: none;
+  }
+
+  .nav-item a {
+      text-decoration: none;
+      color: silver;
+  }
+/* 
+  @media (max-width: 450px) {
+    .container {
+      padding:0;
+      margin:0;
+    }
+
+    body {
+      padding:0;
+    }
+
+    .p-5, .p-3, .p-4, .p-2{
+        padding: 0;
+    }
+
+    .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom:0;
+    }
+} */
+
+input{
+    height: 50px !important;
+}
+
+.under{
+    height: 5px;
+    background-color: tomato;
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+/* h1 h2 h3 h4 h5 {
+    font-weight: 1900;
+    color: red;
+} */
+.p-50{
+    padding-top: 20%;
+}
+
+.bg-black{
+    background-color: black;
+}
+
+/* .nav-item a:active{
+    text-decoration: underline !important;
+    color: tomato;
+    background-color: tomato;
+} */
+
+
+.facebook-color{
+    color: white;
+}
+
+.instagram-color{
+    color: #405DE6;
+}
+
+.absolute-bottom{
+    bottom: 0;
+}
+
+.whatsapp-color{
+  color: #25d366;
+}
+.dropdown-item:hover{
+  color: black !important;
+}
+
+.img-100 {
+  min-width: 100%;
+}
+
+.my-mid{
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
+.ecommerce-bg{
+  background: url('../img/3.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.news br{
+  padding-bottom: 300vh;
+}
+
+.col hr{
+  border-top: 3px solid #3399FF  !important;
+}
+
+.card-img:hover {
+  /* transform: scale(1.05); (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.ul {
+  padding: 0 !important;
+}
+
+.li {
+  padding: 0 !important;
+  list-style: none;
+}
+
+.cover {
+  object-fit: cover !important;
+}
